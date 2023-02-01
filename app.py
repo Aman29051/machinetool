@@ -15,7 +15,12 @@ st.sidebar.image(img1)
 st.sidebar.header("Predict Tool Roughness")
 img = st.sidebar.file_uploader("Choose Input Image",type=["jpg"])
 
-model = load_model('surface_model.h5')
+def r2_score(y_true,y_pred):
+    u = sum(square(y_true-y_pred))
+    v = sum(square(y_true-mean(y_true)))
+    return (1-u/(v+epsilon()))
+
+model = load_model('surface_model.h5',custom_objects={"r2_score": r2_score})
 
 if img:
 	img = Image.open(img)
