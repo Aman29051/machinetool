@@ -4,13 +4,10 @@ from keras.models import load_model
 import matplotlib.pyplot as plt
 import numpy as np
 
-st.set_page_config(page_title="Vijay's App",page_icon="memo",layout="wide")
+st.set_page_config(page_title="Roughness Prediction App",page_icon="memo",layout="wide")
 
 img1 = Image.open('head.png')
-#img2 = Image.open('logo.png')
 
-#st.image(img2)
-#st.write("---")
 st.header("Predicted Roughness of a Tool")
 
 
