@@ -3,3 +3,5 @@ tensorflow==2.9.2
 keras==2.9.0
 numpy==1.24.1
 matplotlib==3.6.0
+scikit-learn==1.2.1
+pandas==1.5.3
