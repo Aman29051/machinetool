@@ -3,6 +3,7 @@ from PIL import Image
 from keras.models import load_model
 import matplotlib.pyplot as plt
 import numpy as np
+import pickle
 
 st.set_page_config(page_title="Vijay's App",page_icon="memo",layout="wide")
 
@@ -22,7 +23,8 @@ def r2_score(y_true,y_pred):
     v = sum(square(y_true-mean(y_true)))
     return (1-u/(v+epsilon()))
 
-model = load_model('surface_model_24IMG.h5',custom_objects={"r2_score": r2_score})
+cnn_model = load_model('surface_model_24IMG.h5',custom_objects={"r2_score": r2_score})
+rf_model = pickle.load(open("rf_model.pkl","rb"))
 
 if img:
     img = Image.open(img)
@@ -32,12 +34,10 @@ if img:
     imgs = np.array(img_grey)
     data = np.reshape(imgs,(1,64,64,1))
     
-    cnn_features = model.predict(data)
+    cnn_features = cnn_model.predict(data)
     cnn_features = cnn_features.reshape(cnn_features.shape[0], -1)
     
-    import pickle
-    model = pickle.load(open("rf_model.pkl","rb"))
-    pred = model.predict(cnn_features)
+    pred = rf_model.predict(cnn_features)
 
     if st.sidebar.button("Predict MeanVB "):
         st.subheader("MeanVB : {}".format(pred[0]))
