@@ -3,4 +3,3 @@ tensorflow==2.9.2
 keras==2.9.0
 numpy==1.24.1
 matplotlib==3.6.0
-opencv-python==4.7.0.68
