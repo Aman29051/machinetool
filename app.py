@@ -4,14 +4,14 @@ from keras.models import load_model
 import matplotlib.pyplot as plt
 import numpy as np
 
-st.set_page_config(page_title="MeanVB Prediction App",page_icon="memo",layout="wide")
+st.set_page_config(page_title="Toolwear value Prediction",page_icon="memo",layout="wide")
 
 img1 = Image.open('head.png')
 
-st.header("Predicted MeanVB of a Tool")
+st.header("Predicted Toolwear")
 
 st.sidebar.image(img1)
-st.sidebar.header("Predict Tool MeanVB")
+st.sidebar.header("Predict Toolwear value ")
 img = st.sidebar.file_uploader("Choose Input Image",type=["jpg"])
 
 def r2_score(y_true,y_pred):
