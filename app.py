@@ -8,7 +8,7 @@ st.set_page_config(page_title="Toolwear value Prediction",page_icon="memo",layou
 
 img1 = Image.open('head.png')
 
-st.header("Predicted Toolwear")
+st.header("Predicted Toolwear Value")
 
 st.sidebar.image(img1)
 st.sidebar.header("Predict Toolwear value ")
