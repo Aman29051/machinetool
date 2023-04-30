@@ -3,7 +3,6 @@ from PIL import Image
 from keras.models import load_model
 import matplotlib.pyplot as plt
 import numpy as np
-import cv2
 
 st.set_page_config(page_title="Vijay's App",page_icon="memo",layout="wide")
 
