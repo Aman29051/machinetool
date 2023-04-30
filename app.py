@@ -32,18 +32,7 @@ if img:
     img_grey = img_grey.resize((64,64))
     imgs = np.array(img_grey)
     data = np.reshape(imgs,(1,64,64,1))
-    def preprocess(img):
-        img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
-        lab = cv2.cvtColor(img, cv2.COLOR_RGB2LAB)
-        l, a, b = cv2.split(lab)
-        clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8,8))
-        cl = clahe.apply(l)
-        limg = cv2.merge((cl,a,b))
-        final = cv2.cvtColor(limg, cv2.COLOR_LAB2RGB)
-        return final
-
-    data = np.array([preprocess(img) for img in data])
-
+    
     cnn_features = model.predict(data)
     cnn_features = cnn_features.reshape(cnn_features.shape[0], -1)
     
